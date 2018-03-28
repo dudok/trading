@@ -2,21 +2,23 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://unpkg.com/ccxt"></script>
 </head>
 
 <body>
 
-<div ng-app="myApp" ng-controller="myCtrl">
-<table ng-if="data">
-    <tr ng-repeat="coin in data">
-        <td> {{ $index + 1 }} </td>
-        <td> {{coin.name}} </td>
-        <td> {{coin.price_usd}} </td>
-        <td> {{coin.percent_change_24h}} </td>
-        <td> {{coin.percent_change_7d}} </td>
-    </tr>
-</table>
-<p ng-if="error"> {{error}} </p>
+<div ng-app="exchangeInfo">
+<form name="exchangeList" ng-controller="checkboxCtrl">
+    <label ng-repeat="exchange in exchanges">
+        <input  type="checkbox"
+                value="{{exchange}}"
+                ng-checked="selection.indexOf(exchange) > -1"
+                ng-click="toggleSelection(exchange)">
+        {{exchange}}
+    </label>
+    <p>{{selection}}</p>
+</form>
 </div>
+    
 <script src="myApp.js"></script>
 </body>
