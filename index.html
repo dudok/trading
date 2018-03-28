@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+<table ng-if="data">
+    <tr ng-repeat="coin in data">
+        <td> {{ $index + 1 }} </td>
+        <td> {{coin.name}} </td>
+        <td> {{coin.price_usd}} </td>
+        <td> {{coin.percent_change_24h}} </td>
+        <td> {{coin.percent_change_7d}} </td>
+    </tr>
+</table>
+<p ng-if="error"> {{error}} </p>
+</div>
+<script src="myApp.js"></script>
+</body>
